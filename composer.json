@@ -1,0 +1,39 @@
+{
+    "name": "maximegosselin/trigger",
+    "type": "library",
+    "description": "Simple event management.",
+    "homepage": "https://github.com/maximegosselin/trigger",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maxime Gosselin",
+            "email": "maximegosselin@hotmail.com",
+            "homepage": "https://github.com/maximegosselin",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "~7.0"
+    },
+    "require-dev": {
+        "phing/phing": "2.*",
+        "phpunit/phpunit": "~5.0",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "MaximeGosselin\\Trigger\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MaximeGosselin\\Trigger\\Test\\": "test"
+        }
+    },
+    "scripts": {
+        "build": "phing",
+        "test": "phpunit --coverage-text",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src test",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src test"
+    }
+}
