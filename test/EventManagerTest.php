@@ -51,6 +51,7 @@ class EventManagerTest extends TestCase
         });
         $this->manager->on('foo', function (EventInterface $event, string $match) {
         });
+        $this->manager->on('foo', new TestEventListener());
     }
 
     /**

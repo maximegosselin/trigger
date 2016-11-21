@@ -53,7 +53,13 @@ class EventManager implements EventManagerInterface
 
     private function isValidListenerCallbackSignature(callable $callback):bool
     {
-        $function = is_array($callback) ? new ReflectionMethod($callback[0], $callback[1]) : new ReflectionFunction($callback);
+        if (is_array($callback)) {
+            $function = new ReflectionMethod($callback[0], $callback[1]);
+        } elseif (is_object($callback)) {
+            $function = new ReflectionMethod($callback, '__invoke');
+        } else {
+            $function = new ReflectionFunction($callback);
+        }
         $params = $function->getParameters();
 
         if (count($params) > 2) {

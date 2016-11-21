@@ -34,6 +34,14 @@ class TestEventListener
         $this->microtime = microtime(true);
     }
 
+    public function __invoke(EventInterface $event, string $match)
+    {
+        $this->event = $event;
+        $this->match = $match;
+        $this->isCalled = true;
+        $this->microtime = microtime(true);
+    }
+
     public function isCalled():bool
     {
         return $this->isCalled;
